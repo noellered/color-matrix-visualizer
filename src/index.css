@@ -12,7 +12,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -23,7 +22,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 0.5rem 2rem;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -36,10 +35,10 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 2px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.2em 1em;
+  font-size: 0.75em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
@@ -60,17 +59,14 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #3e4296;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
+    border-color: #3e4296;
+    color: #3e4296;
   }
 }
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-}
-
 .container {
   display: flex;
   flex-direction: row;
@@ -79,6 +75,57 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 20px 0px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row-start {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.flex-column-start {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.sp-1 {
+  gap: 10px;
+}
+
+.p-2 {
+  padding: 20px;
 }
 
 canvas {
@@ -96,6 +143,9 @@ canvas {
 }
 
 .control-group {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
   margin-bottom: 10px;
 }
 

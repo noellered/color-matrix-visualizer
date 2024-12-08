@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import "./App.css";
 import { DEFAULT_MATRIX } from "./constants";
 import { convertMatrixStringToArray, isValidMatrix } from "./utils";
 
@@ -174,16 +173,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Color Matrix Filter</h1>
-      <div>
+    <div>
+      <div className="flex-column-start">
+        <h4>Color Matrix Visualizer</h4>
         <input type="file" onChange={handleImageUpload} accept="image/*" />
-        <label>Custom Matrix</label>
-        <textarea
-          value={customMatrix ?? ""}
-          onChange={(e) => setCustomMatrix(e.target.value)}
-        ></textarea>
-        <button onClick={handleApplyCustom}>apply custom</button>
         <button onClick={handleReset}>Reset to Defaults</button>
       </div>
       <div className="container">
@@ -196,27 +189,84 @@ function App() {
           <canvas ref={transformedCanvasRef} />
         </div>
       </div>
-      <h2>Adjust Color Matrix</h2>
+
+      <h4>Adjust Color Matrix</h4>
       <div className="controls">
-        {matrixDescriptions.map((description, index) => (
-          <div className="control-group" key={index}>
-            <label>{description}</label>
-            <input
-              type="number"
-              value={matrix[index]}
-              step="0.1"
-              onChange={(e) => handleMatrixChange(index, e.target.value)}
+        <div className="flex-row flex-center sp-1">
+          {matrixDescriptions.slice(0, 5).map((description, index) => (
+            <div className="control-group" key={index}>
+              <label>{description}</label>
+              <input
+                type="number"
+                value={matrix[index]}
+                step="0.1"
+                onChange={(e) => handleMatrixChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex-row flex-center sp-1">
+          {matrixDescriptions.slice(5, 10).map((description, index) => (
+            <div className="control-group" key={index}>
+              <label>{description}</label>
+              <input
+                type="number"
+                value={matrix[index]}
+                step="0.1"
+                onChange={(e) => handleMatrixChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex-row flex-center sp-1">
+          {matrixDescriptions.slice(10, 15).map((description, index) => (
+            <div className="control-group" key={index}>
+              <label>{description}</label>
+              <input
+                type="number"
+                value={matrix[index]}
+                step="0.1"
+                onChange={(e) => handleMatrixChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex-row flex-center sp-1">
+          {matrixDescriptions.slice(15).map((description, index) => (
+            <div className="control-group" key={index}>
+              <label>{description}</label>
+              <input
+                type="number"
+                value={matrix[index]}
+                step="0.1"
+                onChange={(e) => handleMatrixChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-row-center">
+        <div className="flex flex-column-start sp-1">
+          <label style={{ fontWeight: "bold" }}>Matrix:</label>
+          <textarea
+            readOnly
+            rows={4}
+            value={`[${matrix.map((v) => v.toFixed(1)).join(", ")}]`}
+          />
+          <button onClick={handleCopyToClipboard}>Copy Matrix</button>
+        </div>
+        <div className="flex-center flex-column">
+          <div className="flex-center sp-1 flex-column">
+            <label style={{ fontWeight: "bold" }}>Custom Matrix</label>
+            <textarea
+              value={customMatrix ?? ""}
+              onChange={(e) => setCustomMatrix(e.target.value)}
             />
           </div>
-        ))}
-      </div>
-      <div>
-        <button onClick={handleCopyToClipboard}>Copy Matrix</button>
-        <textarea
-          readOnly
-          rows={4}
-          value={`[${matrix.map((v) => v.toFixed(1)).join(", ")}]`}
-        ></textarea>
+          <div className="flex-center flex-row sp-1 p-2">
+            <button onClick={handleApplyCustom}>apply custom</button>
+          </div>
+        </div>
       </div>
     </div>
   );
